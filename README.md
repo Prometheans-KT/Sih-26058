@@ -10,9 +10,11 @@ SIH26058  --- An ESP32-Based Adaptive Sonar System that Continuously Monitors En
 - [Proposed Solution](#proposed-solution)
 - [System Architecture](#system-architecture)
 - [Hardware Components](#hardware-components)
+- [Software & Technologies](#software-technologies)
 - [Working Principle](#working-principle)
 - [Implementation](#implementation)
 - [Results](#results)
+- [Uniqueness](#Uniqueness)
 - [Future Scope](#future-scope)
 - [Conclusion](#conclusion)
 
@@ -106,8 +108,7 @@ Software-Defined Waveform Generation
                 ↓
           Repeat Cycle
 ```
-The main idea is to create a closed-loop system. Environmental conditions and received signal quality are continuously used to decide how the sonar should operate. This allows the system to adjust its transmission parameters instead of using one fixed setting throughout the mission. 
-## System Architecture
+The main idea is to create a closed-loop system. Environmental conditions and received signal quality are continuously used to decide how the sonar should operate. This allows the system to adjust its transmission parameters instead of using one fixed setting throughout the mission.
 
 
 ## Hardware Components
@@ -136,5 +137,75 @@ The proposed system uses the following hardware components:
 The design also focuses on low-power operation by controlling transmission power and pulse activity according to the requirements of the current environment.
 
 By combining environmental sensing, adaptive decision-making, software-defined waveform generation, signal processing, and feedback, the proposed system aims to make underwater sensing more flexible, efficient, and suitable for small AUV platforms.
+## Software and Technologies
 
-##
+Our system combines embedded programming, signal processing, and a web-based monitoring interface to control and monitor the adaptive sonar.
+
+| Technology | Purpose |
+|---|---|
+| **ESP32** | Main controller for reading sensors, running the adaptive logic and controlling the sonar system |
+| **Embedded C/C++** | Programming the ESP32 and handling sensors, control logic and hardware communication |
+| **Signal Processing** | Processing the received sonar signal and extracting useful information such as SNR and target range |
+| **FFT / Digital Filtering** | Used for analyzing the received signal and reducing unwanted noise |
+| **DAC / PWM** | Used to generate the required sonar waveform |
+| **Web Dashboard** | Displays sensor values, sonar parameters, signal quality and system status in real time |
+| **Serial / Wired Communication** | Transfers data between the underwater system and the surface monitoring unit |
+| **Data Logging** | Stores sensor and sonar data for testing, comparison and further analysis |
+## Working principle
+## ⚙️ Working Principle
+
+The **Adaptive Software-Defined Sonar AUV** works as a closed-loop system. It continuously monitors underwater conditions and adjusts the sonar settings instead of using fixed parameters throughout the mission.
+
+```text
+Environmental Sensing
+        ↓
+Data Processing
+        ↓
+Adaptive Decision
+        ↓
+Sonar Parameter Selection
+        ↓
+Waveform Generation
+        ↓
+Underwater Transmission
+        ↓
+Echo Reception
+        ↓
+Signal Processing
+        ↓
+Range / SNR / Target Detection
+        ↓
+Feedback & Adaptation
+        ↓
+Update Sonar Parameters
+        ↓
+      Repeat
+```
+The ESP32 processes temperature, salinity, turbidity, and depth data to select suitable sonar parameters such as frequency, bandwidth, pulse duration, waveform, and transmission power. The transmitted signal is reflected by underwater targets and the returned echo is processed to estimate range and signal quality.
+
+The system uses this information as feedback to continuously adapt its sonar operation while controlling transmission power and pulse activity for low-power operation.
+## Uniqueness
+
+Existing sonar systems and our proposed system both aim to improve underwater sensing, but our approach focuses on making the sonar more adaptive, compact, and suitable for a small AUV platform.
+
+| Existing Approach | Our Approach – Prometheans |
+|---|---|
+| Sonar parameters may be predefined for a particular mission or operating condition | Parameters are adjusted based on changing environmental conditions and signal quality |
+| Adaptation may require dedicated or higher-end hardware | We aim to implement the adaptive logic on a compact embedded platform |
+| Systems can involve complex and expensive hardware | Focus on a low-cost and compact prototype |
+| High transmission power may be used when conditions require it | Transmission power and pulse activity are adjusted to support low-power operation |
+| Environmental data and sonar operation may be handled as separate functions | Environmental sensing is directly connected to the sonar adaptation process |
+| Sonar configuration can be hardware-dependent | Software-defined waveform generation allows the waveform parameters to be changed through software |
+| Monitoring may be provided separately from the sonar system | A monitoring dashboard can display environmental conditions, sonar parameters and system status |
+| Large or specialized systems can be difficult to adapt for small AUVs | Designed with small-AUV integration and compact implementation in mind |
+
+## Future scope
+
+As Team Prometheans, we see this project as a starting point that can be further developed into a more capable underwater sensing system. Some of our planned improvements are:
+
+Improve adaptive algorithms to make sonar parameter selection more accurate for different underwater conditions.
+Extend the operating range by improving the transmitter, receiver, and signal-processing stages.
+Add advanced target classification to distinguish between different types of underwater objects.
+Improve energy management to increase the AUV's operating time.
+Develop a compact and robust underwater enclosure suitable for longer underwater operation.
+Add real-time surface monitoring for environmental data, sonar status, target information, and system health.
