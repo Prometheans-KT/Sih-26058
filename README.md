@@ -1,4 +1,4 @@
-# Prpmetheans
+# Prometheans
 
 ## Software defined sonar transmitter
 SIH26058  --- An ESP32-Based Adaptive Sonar System that Continuously Monitors Environmental Conditions, Dynamically Adjusts Sonar Parameters, Measures Echo Response, Optimizes Transmission Power, and Provides Real-Time Feedback for Autonomous Underwater Vehicles
@@ -16,8 +16,18 @@ SIH26058  --- An ESP32-Based Adaptive Sonar System that Continuously Monitors En
 - [Future Scope](#future-scope)
 - [Conclusion](#conclusion)
 
-## Project Overview
-
+## Project Overview 
+Prometheans creates intelligent underwater sensing system by combining:
+- Real-time environmental sensing like Salinity monitoring , Water temperature monitoring , Depth monitoring and Turbidity monitoring
+- Adaptive sonar parameter selection like sonar frequency, bandwidth, pulse duration, waveform, and transmission power.
+- Software-defined waveform generation
+- Echo detection and target range estimation
+- Adaptive sonar transmission
+- SNR and signal-quality analysis
+- Low-power and duty-cycle optimization
+- Wired underwater-to-surface communication
+- Real-time monitoring dashboard
+- Feedback-based sonar adaptation
 ## Problem Statement
 
 ## Proposed Solution
