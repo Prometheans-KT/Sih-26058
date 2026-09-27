@@ -65,45 +65,76 @@ Our team, Prometheans, aims to address this problem by developing a compact and 
 The goal is to make the sonar more flexible and energy-efficient, while keeping the system suitable for integration with a small AUV.
 
 ## Proposed Solution
-Our proposed system is a compact, low-power adaptive sonar payload designed for an Autonomous Underwater Vehicle (AUV). Instead of keeping the sonar settings fixed throughout the mission, the system continuously observes the underwater environment and changes the sonar parameters according to the conditions.
+Our proposed system is a compact, low-power and real-time adaptive sonar payload designed for an Autonomous Underwater Vehicle (AUV). Instead of keeping the sonar settings fixed throughout the mission, the system continuously monitors the underwater environment and adjusts the sonar parameters according to the conditions.
 
 ```text
-Environmental Sensors
+Environmental Sensing
 (Temperature • Salinity • Turbidity • Depth)
                 ↓
         Data Collection
                 ↓
-       Data Processing
-     (Filter & Validate)
+        Data Processing
+      (Filter & Validate)
                 ↓
        Adaptive Decision
                 ↓
-   Select Sonar Parameters
+    Select Sonar Parameters
 (Frequency • Bandwidth • Pulse
- Duration • Waveform • Power)
+ Duration • Waveform • TX Power)
                 ↓
-   Waveform Generation
-       (ESP32 + DAC)
+Software-Defined Waveform Generation
+             (ESP32 + DAC)
                 ↓
-   Signal Conditioning
-      (Filter + Amplifier)
+       Signal Conditioning
+        (Filter + Amplifier)
                 ↓
-    Underwater Transmission
+     Underwater Transmission
           (TX Transducer)
                 ↓
-       Echo Reception
-          (Hydrophone)
+        Echo Reception
+           (Hydrophone)
                 ↓
-       Signal Processing
+        Signal Processing
         (FFT / Filtering)
                 ↓
-   Range / SNR / Target
-        Detection
+    Range / SNR / Target
+          Detection
                 ↓
-     Feedback Analysis
+       Feedback Analysis
                 ↓
-   Update Sonar Parameters
+    Update Sonar Parameters
                 ↓
-        Repeat Cycle
+          Repeat Cycle
+```
+The main idea is to create a closed-loop system. Environmental conditions and received signal quality are continuously used to decide how the sonar should operate. This allows the system to adjust its transmission parameters instead of using one fixed setting throughout the mission. 
+## System Architecture
 
 
+## Hardware Components
+
+The proposed system uses the following hardware components:
+
+| Component | Purpose |
+|---|---|
+| **ESP32** | Main controller for sensor reading, adaptive decision-making, communication and signal processing |
+| **Temperature Sensor (DS18B20)** | Measures underwater temperature |
+| **Salinity / Conductivity Sensor** | Measures electrical conductivity to estimate salinity |
+| **Turbidity Sensor** | Measures the clarity of water |
+| **Pressure / Depth Sensor** | Measures underwater pressure and estimates depth |
+| **DAC / Waveform Generator** | Converts the digitally generated sonar waveform into an analog signal |
+| **Signal Filter** | Removes unwanted frequency components and improves signal quality |
+| **Power Amplifier** | Increases the signal level before transmission |
+| **Underwater TX Transducer** | Converts the electrical sonar signal into acoustic waves |
+| **Hydrophone / RX Transducer** | Receives the reflected acoustic signal |
+| **Receiver Amplifier / LNA** | Amplifies the weak received echo signal |
+| **ADC** | Converts the received analog signal into digital data for processing |
+| **Battery** | Provides power to the AUV system |
+| **Power Management Unit (PMU)** | Regulates and distributes power to different components |
+| **Communication Interface** | Transfers monitoring and mission data between the AUV and surface system |
+| **Waterproof Enclosure** | Protects the electronics from water during underwater operation |
+
+The design also focuses on low-power operation by controlling transmission power and pulse activity according to the requirements of the current environment.
+
+By combining environmental sensing, adaptive decision-making, software-defined waveform generation, signal processing, and feedback, the proposed system aims to make underwater sensing more flexible, efficient, and suitable for small AUV platforms.
+
+##
