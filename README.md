@@ -109,6 +109,73 @@ Software-Defined Waveform Generation
           Repeat Cycle
 ```
 The main idea is to create a closed-loop system. Environmental conditions and received signal quality are continuously used to decide how the sonar should operate. This allows the system to adjust its transmission parameters instead of using one fixed setting throughout the mission.
+## System Architecture
+
+
+```text
+                 UNDERWATER AUV SYSTEM
+                         │
+        ┌────────────────┴────────────────┐
+        │                                 │
+        ▼                                 ▼
+ Environmental Sensors              Power System
+        │                         (Battery + PMU)
+        │                                 │
+        └──────────────┬──────────────────┘
+                       ▼
+                 ESP32 Controller
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+        ▼              ▼              ▼
+ Adaptive Algorithm  Data Logging   Communication
+        │                             │
+        ▼                             ▼
+ Sonar Parameter                  Surface Gateway
+ Selection                        / Dashboard
+        │
+        ▼
+ Software-Defined
+ Waveform Generation
+        │
+        ▼
+     DAC / PWM
+        │
+        ▼
+ Filter + Power Amplifier
+        │
+        ▼
+ Underwater TX Transducer
+        │
+        ▼
+     Acoustic Signal
+        │
+        ▼
+       Target
+        │
+        ▼
+   Echo / Reflected Signal
+        │
+        ▼
+     Hydrophone
+        │
+        ▼
+ Receiver Amplifier + Filter
+        │
+        ▼
+       ADC
+        │
+        ▼
+   ESP32 Signal Processing
+        │
+        ▼
+ Range / SNR / Detection
+        │
+        └──────────► Feedback
+                     │
+                     ▼
+              Adaptive Algorithm
+```
 
 
 ## Hardware Components
@@ -209,3 +276,15 @@ Add advanced target classification to distinguish between different types of und
 Improve energy management to increase the AUV's operating time.
 Develop a compact and robust underwater enclosure suitable for longer underwater operation.
 Add real-time surface monitoring for environmental data, sonar status, target information, and system health.
+
+## Conclusion
+
+
+As Team Prometheans, our aim is to develop a sonar system that can adapt to changing underwater conditions instead of depending on fixed settings. By combining environmental sensors, an ESP32-based controller, adaptive decision-making, and sonar signal processing, we want to make underwater sensing more flexible and reduce unnecessary power consumption.
+
+The main idea behind our project is that the sonar should not continue working in the same way when the surrounding conditions change. It should use the available environmental data and feedback from received echoes to adjust its operating parameters whenever required. This can help improve signal quality while making better use of the limited battery power available in an Autonomous Underwater Vehicle (AUV).
+
+Through this project, we are exploring how embedded systems and software-defined technology can be used to solve a real-world underwater engineering problem. We also understand that building a reliable underwater sonar system requires careful hardware selection, testing, and improvement. Our next step is to validate the design under different water conditions and improve its performance through practical experiments.
+
+Our goal is to develop a compact, low-power, and affordable adaptive sonar prototype that can eventually support underwater exploration, monitoring, and mapping using small AUVs.
+
