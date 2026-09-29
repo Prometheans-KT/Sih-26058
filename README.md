@@ -204,7 +204,7 @@ The proposed system uses the following hardware components:
 The design also focuses on low-power operation by controlling transmission power and pulse activity according to the requirements of the current environment.
 
 By combining environmental sensing, adaptive decision-making, software-defined waveform generation, signal processing, and feedback, the proposed system aims to make underwater sensing more flexible, efficient, and suitable for small AUV platforms.
-## Software and Technologies
+## Software & Technologies
 
 Our system combines embedded programming, signal processing, and a web-based monitoring interface to control and monitor the adaptive sonar.
 
