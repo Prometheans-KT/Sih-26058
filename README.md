@@ -11,8 +11,6 @@ SIH26058  --- An ESP32-Based Adaptive Sonar System that Continuously Monitors En
 - [System Architecture](#system-architecture)
 - [Hardware Components](#hardware-components)
 - [Software & Technologies](#software-technologies)
-- [Working Principle](#working-principle)
-- [Implementation](#implementation)
 - [Results](#results)
 - [Uniqueness](#Uniqueness)
 - [Future Scope](#future-scope)
