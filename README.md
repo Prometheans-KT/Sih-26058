@@ -11,7 +11,7 @@ SIH26058  --- An ESP32-Based Adaptive Sonar System that Continuously Monitors En
 - [System Architecture](#system-architecture)
 - [Hardware Components](#hardware-components)
 - [Software & Technologies](#software-technologies)
-- [Working Principle](#Working Principle)
+- [Working Principle](#working-principle)
 - [Uniqueness](#Uniqueness)
 - [Future Scope](#future-scope)
 - [Conclusion](#conclusion)
@@ -217,7 +217,7 @@ Our system combines embedded programming, signal processing, and a web-based mon
 | **Serial / Wired Communication** | Transfers data between the underwater system and the surface monitoring unit |
 | **Data Logging** | Stores sensor and sonar data for testing, comparison and further analysis |
 ## Working principle
-## ⚙️ Working Principle
+
 
 The **Adaptive Software-Defined Sonar AUV** works as a closed-loop system. It continuously monitors underwater conditions and adjusts the sonar settings instead of using fixed parameters throughout the mission.
 
